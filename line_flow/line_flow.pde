@@ -8,7 +8,7 @@ final float drops = 13.0f;           // "density"
 
 pdf.beginDraw();
 pdf.background(color(#FFFFFF));
-pdf.background(color(#000000));
+pdf.stroke(color(#000000));
 pdf.strokeWeight(4.0f);
 
 for (int i = 0; i < points.length; i++) {
