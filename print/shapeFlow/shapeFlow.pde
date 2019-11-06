@@ -5,7 +5,7 @@ PGraphics pdf = createGraphics(3600, 3600, PDF, title);
 PVector[] shape = new PVector[100];
 
 for (int i = 0; i < shape.length; i++) {
-  float x = i * (pdf.width / shape.length);
+  float x = i * (pdf.width / shape. length);
   shape[i] = new PVector(x, 0);
 }
 
