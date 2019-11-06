@@ -50,20 +50,24 @@ exit();
 * shapeFlow.pde - commented
 */
 
-// I'm using the pdf library in static mode, so no setup() or draw() is defined
+/** Constants */
+
+// I'm using the pdf library in static mode no setup() or draw() is declared
 import processing.pdf.*;
 
-// Just to have the author on the shirt ;)
+// Just to have the author's name on the shirt ;)
 String title = "matthias-jaeger-net--shapeFlow.pdf";
 
-// Create a graphics buffer with print resolution  
-// using PDF render constant and the title from above
+// Create a graphics buffer with print resolution using PDF render constant
 PGraphics pdf = createGraphics(3600, 3600, PDF, title);
+
+
+/** Initialize the shape to be drawn */
 
 // Consider a shape as an array of 100 vectors
 PVector[] shape = new PVector[100];
 
-// Initialize the shape on the top edge of the pdf 
+// Create the values on the top edge of the pdf
 for (int i = 0; i < shape.length; i++) {
 
   // Space out the points proportional to the width
@@ -73,8 +77,11 @@ for (int i = 0; i < shape.length; i++) {
   shape[i] = new PVector(x, 0);
 }
 
-// Start drawing the pdf
+/** Start drawing the pdf */
+
 pdf.beginDraw();
+
+/** Drawing styles definition */
 
 // Set the fill color to white
 pdf.fill(255, 255, 255);
@@ -85,7 +92,9 @@ pdf.stroke(0, 0, 0);
 // Set the stroke weight for printing 
 pdf.strokeWeight(8);
 
-// Stack the shape 3600 times on top of each other 
+
+/** Stack 3600 shapes on top of each other */
+
 for (int i = 0; i < pdf.height; i++) {
   
   // Start a fresh shape
@@ -94,11 +103,17 @@ for (int i = 0; i < pdf.height; i++) {
   // Loop over the shapes current vectors
   for (PVector vector : shape) {
     
+    /** Render the current shape */
+
     // Add the vector to the shape 
     pdf.vertex(vector.x, vector.y);
     
-    // Create a random motion vector that's pointing downwards, mostly
+    /** Create a random motion vector */
+  
+    // Randomly go left or right or 0 in extreme cases
     float shift_x = random(-10, 10);
+    
+    // Point mostly downwards, sometimes more sometimes less 
     float drops_y = random(0, 30);
     
     // Then add the changes to the shape vector 
@@ -115,6 +130,7 @@ pdf.endDraw();
 // Has to be called in static mode, closes the file
 pdf.dispose();
 
-// Done with all quit the program
+/** Done with all quit the program */
+
 exit();
 ```
