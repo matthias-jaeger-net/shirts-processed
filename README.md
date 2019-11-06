@@ -124,13 +124,14 @@ for (int i = 0; i < pdf.height; i++) {
   pdf.endShape();
 }
 
+/** Done with all quit the program */
+
 // Done with stacking shapes on top of each other
 pdf.endDraw();
 
-// Has to be called in static mode, closes the file
+// Needs to be called in static mode and frees the buffer
 pdf.dispose();
 
-/** Done with all quit the program */
-
+// Exits the program
 exit();
 ```
